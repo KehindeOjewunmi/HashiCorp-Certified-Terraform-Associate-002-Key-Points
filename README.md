@@ -2,7 +2,9 @@
 
 # `Directories and Modules`
 
-Terraform treat modules as separate documents. Module calls included in the root module acts a link to other modules that are located either in the local directories or in external sources like the Terraform Registry.
+Terraform treat modules as separate documents. Module calls included in the `root module` acts a link to other modules that are located either `child module` in the local directories or in external sources like the Terraform Registry.
+
+A terraform `root module must specify required providers` in order to download required plugins to access their remote APIs
 
 # `Dependency Lock File: .terraform.lock.hcl`
 
@@ -26,6 +28,8 @@ Terraform uses two sources of truth: the configuration itself, and the state.
 
 Some nested block doesn't require labels:
 
+`lifecycle`
+`timeouts`
      resource "aws_instance" "example" {
           lifecycle {
                create_before_destroy = true
@@ -48,4 +52,10 @@ Some nested block does require labels:
           }
      }
 
+# Terraform general default behavior to `configuration file` when you run `terraform apply` command
 
+`configuration file argument supercedes state file arguments`
+Create resources 
+Update in-place
+Destroy resources 
+Destroy and re-create
