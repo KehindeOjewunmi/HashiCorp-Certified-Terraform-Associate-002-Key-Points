@@ -15,3 +15,37 @@ Dependency Lock File are created in the `root module of your configuration` each
 You can override exisiting selected version by adding the -upgrade option when you run `terraform init -upgrade`. This will replace all of the checksum values in hashes.
 
 Terraform uses two sources of truth: the configuration itself, and the state.
+
+# Block Content Syntax
+
+`image_id       = "abc123"`
+`Argument name  = Argument value`
+`Argument key   = Argument value`
+
+# Nested Block Mapping
+
+Some nested block doesn't require labels:
+
+     resource "aws_instance" "example" {
+          lifecycle {
+               create_before_destroy = true
+          }
+     }
+
+Some nested block does require labels:
+
+     resource "aws_instance" "example" {
+
+          provisioner `"local-exec"` {
+               command = "echo 'Hello World' >example.txt"
+          }
+          provisioner `"file"` {
+               source      = "example.txt"
+               destination = "/tmp/example.txt"
+          }
+          provisioner `"remote-exec"` {
+               inline = ["sudo install-something -f /tmp/example.txt",]
+          }
+     }
+
+
