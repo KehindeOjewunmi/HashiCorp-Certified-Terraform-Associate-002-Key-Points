@@ -59,3 +59,18 @@ Create resources
 Update in-place
 Destroy resources 
 Destroy and re-create
+
+
+# Meta-Arguments
+
+`depends_on`
+
+Only required when resource couldn't reference other resource from it's argument list.
+
+`count`
+It is a meta-argument for replication that accepts numerical whole number. It uses `index` as reference.
+
+`for_each`
+It is a meta-argument used to provide `distinct infrastructure object association` that accepts map or a set of strings. It uses `each.key, each.value or both as reference`.
+`toset function` are used to explicitly convert a list of strings to a set ad remove duplication.
+
