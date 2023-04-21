@@ -74,3 +74,12 @@ It is a meta-argument for replication that accepts numerical whole number. It us
 It is a meta-argument used to provide `distinct infrastructure object association` that accepts map or a set of strings. It uses `each.key, each.value or both as reference`.
 `toset function` are used to explicitly convert a list of strings to a set ad remove duplication.
 
+`provider`
+It is the meta-argument used to override the default provider configuration. This is achieved with use of `alias.`
+
+`lifecycle` 
+It is a nested meta-arguments with argument options of `create_before_destroy`,
+`prevent_destroy`, 
+`ignore_changes`, and 
+`replace_triggered_by.`
+It also accepts child nested precondition and postcondition blocks 
